@@ -1,7 +1,7 @@
 /*
  * @Author: Akko
  * @Date: 2020-09-06 14:44:01
- * @LastEditTime: 2020-09-06 15:40:02
+ * @LastEditTime: 2020-09-06 15:58:06
  * @LastEditors: Akko
  * @Description: 雇员类
  * @FilePath: /EIS/Employee.c++
@@ -9,10 +9,10 @@
  */
 #include <iostream>
 #include <string>
-// #include <fstream>
+#include <fstream>
 
-// #ifndef EMPLOYEE
-// #define EMPLOYEE
+#ifndef EMPLOYEE
+#define EMPLOYEE
 
 using namespace std;
 
@@ -104,7 +104,7 @@ string Employee::UGet()
 
     return s1;
 }
-void Employee::Display()//显示功能
+void Employee::Display() //显示功能
 {
     cout << "\n1.编号"
          << "\t"
@@ -117,7 +117,7 @@ void Employee::Display()//显示功能
          << "5.级别" << endl;
     cout << Employee_NO << "\t" << Name << "\t" << Sex << "\t" << Department << "\t" << Rank << endl;
 }
-int Employee::Modify()//修改功能
+int Employee::Modify() //修改功能
 {
     int temp;
     Employee::Display();
@@ -153,3 +153,21 @@ int Employee::Modify()//修改功能
     return 0;
 }
 int Employee::Update()
+{
+    ofstream out(".\\Employee.txt");
+    if (!out)
+    {
+        cout << "操作失败!\n";
+    }
+    else
+    {
+        out << "1.编号: " << Employee_NO << endl;
+        out << "2.姓名: " << Name << endl;
+        out << "3.性别: " << Sex << endl;
+        out << "4.所在部门: " << Department << endl;
+        out << "5.级别: " << Rank << endl;
+    }
+    out.close();
+    return 0;
+}
+#endif//EMPLOYEE
